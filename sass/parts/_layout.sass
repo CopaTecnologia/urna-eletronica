@@ -1,0 +1,56 @@
+
+
+.topo
+	text-align: center
+
+.wrapper
+	width: $app-width
+	margin: auto
+
+.app
+	.wrapper
+		padding: $spacing
+		padding-top: 120px
+		background:
+			image: url("../img/brasao-justica-eleitoral.png")
+			repeat: no-repeat
+			position: 100% 10px
+		box-shadow: $app-shadow
+		background-color: $bg-color
+
+.display
+	width: $display-width
+	height: $display-height
+	background-color: $light-grey
+	position: relative
+	+border
+
+	.display-header
+		padding: $spacing
+	.display-body
+		padding: 0 $spacing
+	.display-footer
+		padding: $spacing / 4 $spacing / 3
+		+border(-top)
+	.display-legend
+		position: absolute
+		top: 5px
+		font-size: $small
+	.display-pic
+		width: 100px
+		height: 120px
+		overflow: hidden
+		+border
+
+.panel
+	width: $panel-width
+	background-color: $black
+	padding: $spacing / 2
+	border-radius: 3px
+
+	.panel-body
+		box-sizing: border-box
+		margin: $spacing / 2 auto
+		width: $spacing * 15
+	.panel-footer
+

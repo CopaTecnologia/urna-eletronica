@@ -1,0 +1,94 @@
+
+body
+	background: $background
+	color: $black
+	font-size: $base-font-size
+	box-sizing: border-box
+	min-height: 100vh
+
+	*
+		box-sizing: inherit
+
+img
+	max-width: 100%
+
+ul.seamless
+	margin: 0
+	padding: 0
+	list-style: none
+li
+	margin: $spacing / 4 0
+	line-height: $spacing
+
+.uppercase
+	text-transform: uppercase
+	font-size: 93%
+.bold
+	font-weight: bold
+.x-large
+	font-size: $x-large
+.xx-large
+	font-size: $xx-large
+.text-center
+	text-align: center
+
++module(btn)
+	display: inline-block
+	border: 0 none
+	outline: 0 none
+	margin: $spacing / 2
+	padding: $spacing / 2
+	font-weight: bold
+	text-align: center
+	box-shadow: $btn-inner-shadow, $btn-outer-shadow
+	border-radius: 3px
+	box-sizing: border-box
+
+	&:active
+		box-shadow: none
+
+	+variant(reverse)
+		color: $bg-color
+		background-color: $dark-grey
+	+variant("white")
+		+white-gradient
+	+variant("orange")
+		+orange-gradient
+	+variant("green")
+		+green-gradient
+		line-height: $x-large
+	+variant("num")
+		font:
+			size: xx-large
+			weight: normal
+		width: $number-width
+		height: $number-height
+
++module(flex)
+	display: flex
+
+	.expand
+		flex: 1
+
+	+variant(wrap)
+		flex-wrap: wrap
+		&>*
+			display: inline-block
+	+variant(nowrap)
+		flex-wrap: nowrap
+	+variant(column)
+		flex-direction: column
+	+variant(center)
+		align-items: center
+		align-content: center
+		justify-content: center
+	+variant(start)
+		align-items: flex-start
+		justify-content: flex-start
+	+variant(end)
+		align-items: flex-end
+		justify-content: flex-end
+	+variant(around)
+		justify-content: space-around
+	+variant(justify)
+		justify-content: space-between
