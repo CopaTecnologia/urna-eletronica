@@ -1,0 +1,15 @@
+
+title: Urna Eletrônica Virtual
+timezone: America/Sao_Paulo
+description: ""
+baseurl: "/urna-eletronica"
+url: http://copatecnologia.com.br
+markdown: kramdown
+sass:
+  style: compressed
+exclude:
+- node_modules
+- desktop.ini
+- gulpfile.js
+- npm-debug.log
+- package.json

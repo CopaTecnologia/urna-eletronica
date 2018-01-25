@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+    {% include header.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyArNVmu_273eMGJS5eMzFVcx0SQk7L7FDs",
+        authDomain: "copa-tec-urna-eletronica.firebaseapp.com",
+        databaseURL: "https://copa-tec-urna-eletronica.firebaseio.com",
+        projectId: "copa-tec-urna-eletronica",
+        storageBucket: "copa-tec-urna-eletronica.appspot.com",
+        messagingSenderId: "168398403070"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src="{{ site.baseurl }}/js/main.js"></script>
+
+</body>
+</html>

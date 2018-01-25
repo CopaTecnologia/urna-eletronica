@@ -1,65 +1,56 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-	<meta charset="UTF-8">
-	<title>Urna Eletrônica - Objetivo Baixada</title>
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="icon" href="img/favicon.png" type="image/png">
+---
+layout: default
+---
 
-	<link rel="stylesheet" href="css/main.css">
-</head>
-<body data-flex="column">
-	<header class="topo">
-		<div class="wrapper">
-			<h1>Urna Eletrônica - Objetivo Baixada</h1>
-		</div>
-	</header>
-	<!-- App -->
-	<div class="app expand" data-flex="column center">
-		<div class="wrapper" data-flex="start justify">
-			<div class="display" data-flex="column justify">
-				<div class="display-header" data-flex="start justify">
-					<div class="panel-header-metadata expand">
-						<small class="display-legend uppercase bold">Seu voto para</small>
-						<p class="uppercase text-center bold">Governador</p>
-						<div class="xx-large">96</div>
+<div class="app" data-grid="column center">
+	<div class="wrapper" data-grid="row start justify">
+		<div class="display" data-cell="shrink">
+			<div class="display-header" data-grid="start justify">
+				<div class="panel-header-metadata">
+					<small class="display-legend uppercase bold">Seu voto para</small>
+					<p class="uppercase text-center bold">Governador</p>
+					<div>
+						<span class="display-label">Número:</span> 
+						<span class="xx-large">96</span>
 					</div>
-					<div class="display-pic"><img src="img/blank-avatar.jpg"></div>
 				</div>
-				<div class="display-body expand">
-					<ul class="seamless">
-						<li>Girimum Caminha</li>
-						<li>PCPC</li>
-					</ul>
-				</div>
-				<div class="display-footer">
-					<small>Aperte a tecla:</small>
-					<small data-flex="center">VERDE para CONFIRMAR este voto.<br>LARANJA para REINICIAR este voto.</small>
-				</div>
+				<div class="display-pic" data-cell="shrink"><img src="img/blank-avatar.jpg"></div>
 			</div>
-			<div class="panel">
-				<div class="panel-body" data-flex="wrap center">
-					<button data-btn="reverse num">1</button>
-					<button data-btn="reverse num">2</button>
-					<button data-btn="reverse num">3</button>
-					<button data-btn="reverse num">4</button>
-					<button data-btn="reverse num">5</button>
-					<button data-btn="reverse num">6</button>
-					<button data-btn="reverse num">7</button>
-					<button data-btn="reverse num">8</button>
-					<button data-btn="reverse num">9</button>
-					<button data-btn="reverse num">0</button>
-				</div>
-				<div class="panel-footer" data-flex="center">
-					<button data-btn="white" class="uppercase">Branco</button>
-					<button data-btn="orange" class="uppercase">Corrige</button>
-					<button data-btn="green" class="uppercase">Confirma</button>
-				</div>
+			<div class="display-body">
+				<ul class="seamless">
+					<li>
+						<span class="display-label">Nome:</span> 
+						<span class="display-name">Girimum Caminha</span>
+					</li>
+					<li>
+						<span class="display-label">Partido:</span>
+						<span class="display-party">PCPC</span>
+					</li>
+				</ul>
+			</div>
+			<div class="display-footer">
+				<small>Aperte a tecla:</small>
+				<small data-grid="center">VERDE para CONFIRMAR este voto.<br>LARANJA para REINICIAR este voto.</small>
+			</div>
+		</div>
+		<div class="panel" data-cell="shrink">
+			<div class="panel-body" data-grid="row shrink center cols-3">
+				<button data-btn="reverse num">1</button>
+				<button data-btn="reverse num">2</button>
+				<button data-btn="reverse num">3</button>
+				<button data-btn="reverse num">4</button>
+				<button data-btn="reverse num">5</button>
+				<button data-btn="reverse num">6</button>
+				<button data-btn="reverse num">7</button>
+				<button data-btn="reverse num">8</button>
+				<button data-btn="reverse num">9</button>
+				<button data-btn="reverse num">0</button>
+			</div>
+			<div class="panel-footer" data-grid="row center">
+				<button data-btn="white" class="uppercase">Branco</button>
+				<button data-btn="orange" class="uppercase">Corrige</button>
+				<button data-btn="green" class="uppercase">Confirma</button>
 			</div>
 		</div>
 	</div>
-
-	<script src="js/http.js"></script>
-	<script src="js/main.js"></script>
-</body>
-</html>
+</div>

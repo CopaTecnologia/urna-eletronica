@@ -1,37 +1,67 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var coffee = require('gulp-coffee');
+var gulp        = require('gulp');
 var browserSync = require('browser-sync');
-var reload = browserSync.reload;
+var cp          = require('child_process');
+var rollup      = require('gulp-rollup');
+var babel       = require('gulp-babel');
+var sourcemaps  = require('gulp-sourcemaps');
 
-gulp.task('default', ['serve', 'watch'], function() {});
+var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
+var messages = {
+    jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
+};
+var browserSyncRoutes = {
+    /**
+     * Comment this if you don't use a site.baseurl in _config.yml
+     * or change '/johnyplate' to your site.baseurl.
+     */
+    '/urna-eletronica': '_site'
+}
 
-gulp.task('watch', function() {
-	gulp.watch('coffee/**/*.coffee', ['coffee']);
-	gulp.watch('sass/**/*.sass', ['sass']);
+gulp.task('jekyll-build', function (done) {
+    browserSync.notify(messages.jekyllBuild);
+    return cp.spawn(jekyll, ['build'], {stdio: 'inherit'})
+        .on('close', done);
 });
 
-gulp.task('coffee', function() {
-	gulp.src('coffee/**/*.coffee')
-		.pipe(coffee({bare: true}).on('error', gutil.log))
-		.pipe(gulp.dest('js'));
+gulp.task('bundle', function() {
+    gulp.src('./_scripts/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(rollup({
+            input: './_scripts/main.js',
+            format: 'iife'
+        }))
+        .on('error', console.log)
+        .pipe(babel({
+            "presets": ["es2015"]
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('./js'))
+        ;
+  });
+
+gulp.task('jekyll-rebuild', ['bundle', 'jekyll-build'], function () {
+    browserSync.reload();
 });
 
-gulp.task('sass', function() {
-	gulp.src('sass/**/*.sass')
-		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(autoprefixer({remove: true}))
-		.pipe(gulp.dest('css'));
-})
-
-gulp.task('serve', function() {
-	browserSync({
-		server: {
-			baseDir: './'
-		}
-	});
-
-	gulp.watch(['*.html', 'css/**/*.css', 'js/**/*.js'], {cwd: './'}, reload);
+gulp.task('browser-sync', ['bundle', 'jekyll-build'], function() {
+    browserSync({
+        server: {
+            baseDir: '_site',
+            routes: browserSyncRoutes
+        }
+    });
 });
+
+gulp.task('watch', function () {
+    gulp.watch([
+        './*', 
+        '_layouts/**/*', 
+        '_includes/**/*', 
+        '_sass/**/*', 
+        'css/**/*', 
+        '_scripts/**/*', 
+        'js/**/*'
+    ], ['jekyll-rebuild']);
+});
+
+gulp.task('default', ['browser-sync', 'watch']);
