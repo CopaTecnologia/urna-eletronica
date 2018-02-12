@@ -8,10 +8,10 @@ layout: default
 			<div class="display-header" data-grid="start justify">
 				<div class="panel-header-metadata">
 					<small class="display-legend uppercase bold">Seu voto para</small>
-					<p class="uppercase text-center bold">Governador</p>
+					<p class="uppercase text-center bold" data-model="position">Governador</p>
 					<div>
 						<span class="display-label">Número:</span> 
-						<span class="xx-large">96</span>
+						<span class="xx-large" data-model="number">96</span>
 					</div>
 				</div>
 				<div class="display-pic" data-cell="shrink"><img src="img/blank-avatar.jpg"></div>
@@ -35,21 +35,21 @@ layout: default
 		</div>
 		<div class="panel" data-cell="shrink">
 			<div class="panel-body" data-grid="row shrink center cols-3">
-				<button data-btn="reverse num">1</button>
-				<button data-btn="reverse num">2</button>
-				<button data-btn="reverse num">3</button>
-				<button data-btn="reverse num">4</button>
-				<button data-btn="reverse num">5</button>
-				<button data-btn="reverse num">6</button>
-				<button data-btn="reverse num">7</button>
-				<button data-btn="reverse num">8</button>
-				<button data-btn="reverse num">9</button>
-				<button data-btn="reverse num">0</button>
+				<button data-click="digitar" data-btn="reverse num">1</button>
+				<button data-click="digitar" data-btn="reverse num">2</button>
+				<button data-click="digitar" data-btn="reverse num">3</button>
+				<button data-click="digitar" data-btn="reverse num">4</button>
+				<button data-click="digitar" data-btn="reverse num">5</button>
+				<button data-click="digitar" data-btn="reverse num">6</button>
+				<button data-click="digitar" data-btn="reverse num">7</button>
+				<button data-click="digitar" data-btn="reverse num">8</button>
+				<button data-click="digitar" data-btn="reverse num">9</button>
+				<button data-click="digitar" data-btn="reverse num">0</button>
 			</div>
 			<div class="panel-footer" data-grid="row center">
-				<button data-btn="white" class="uppercase">Branco</button>
-				<button data-btn="orange" class="uppercase">Corrige</button>
-				<button data-btn="green" class="uppercase">Confirma</button>
+				<button data-click="branco"    data-btn="white"  class="uppercase">Branco</button>
+				<button data-click="corrigir"  data-btn="orange" class="uppercase">Corrige</button>
+				<button data-click="confirmar" data-btn="green"  class="uppercase">Confirma</button>
 			</div>
 		</div>
 	</div>
