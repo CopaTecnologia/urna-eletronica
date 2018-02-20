@@ -26,15 +26,6 @@ gulp.task('jekyll-build', function (done) {
         .on('close', done);
 });
 
-gulp.task('post-css', function () {
-    gulp.src('_site/css/main.css')
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest('_site/css/'));
-});
-
 gulp.task('bundle', function () {
     gulp.src('./_scripts/**/*.js')
         .pipe(sourcemaps.init())
@@ -74,9 +65,6 @@ gulp.task('watch', function () {
         '_scripts/**/*',
         'js/**/*'
     ], ['jekyll-rebuild']);
-    gulp.watch([
-        '_site/css/**/*'
-    ], ['post-css']);
 });
 
 gulp.task('default', ['browser-sync', 'watch']);
