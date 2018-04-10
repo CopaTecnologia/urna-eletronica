@@ -41,7 +41,7 @@ gulp.task('bundle', function () {
         .pipe(gulp.dest('./js'));
 });
 
-gulp.task('jekyll-rebuild', ['bundle', 'jekyll-build'], function () {
+gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
     browserSync.reload();
 });
 
@@ -62,9 +62,11 @@ gulp.task('watch', function () {
         '_sections/**/*',
         '_sass/**/*',
         'css/**/*',
-        '_scripts/**/*',
         'js/**/*'
     ], ['jekyll-rebuild']);
+    gulp.watch([
+        '_scripts/**/*'
+    ], ['bundle']);
 });
 
 gulp.task('default', ['browser-sync', 'watch']);
