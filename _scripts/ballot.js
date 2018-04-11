@@ -13,11 +13,11 @@ const ballot = {
         if (isBlank) return false;
         if (isNaN(num) || num < 0) return false;
         if (number.length >= step.limit) return false;
-        if (setNumber(number + num)) return number;
+        setNumber(number + num);
     },
     confirm: () => {
         if (number.length === step.limit || isBlank) {
-            step.vote = number || 'VOTO EM BRANCO';
+            step.vote = number || null;
             votes.push(step);
             if (!setStep(step.index + 1)) {
                 const results = votes;
@@ -43,7 +43,11 @@ const ballot = {
 function setNumber(num) {
     number = num;
     display.setNumber(number);
-    if (number.length === step.limit) return true;
+    if (number.length === step.limit) {
+        const candy = step.candies.filter(c => c.number === number)[0];
+        if (candy) display.set(candy);
+        else display.setNull();
+    };
 }
 
 function clear() {

@@ -1,3 +1,5 @@
+import Candy from './Candy';
+
 export default class Display {
 
     constructor(what) {
@@ -22,20 +24,20 @@ export default class Display {
 
     set(candy) {
         this.img.src = candy.img || this.blank_img;
-        this.name.textContent = candy.name.trim();
-        this.party.textContent = candy.party.trim();
+        this.name.textContent = candy.name;
+        this.party.textContent = candy.party;
         this.body.removeAttribute('hidden');
         this.footer.removeAttribute('hidden');
-        if (candy.isBlank) this.root.classList.add('blank');
+    }
+
+    setNull() {
+        this.set(Candy.nullCandy());
+        this.root.classList.add('is-null');
     }
 
     setBlank() {
-        this.set({
-            img: '',
-            name: 'VOTO EM BRANCO',
-            party: '',
-            isBlank: true
-        });
+        this.set(Candy.blankCandy());
+        this.root.classList.add('is-blank');
     }
 
     clear() {
@@ -44,7 +46,8 @@ export default class Display {
         this.party.textContent = '';
         this.body.setAttribute('hidden', true);
         this.footer.setAttribute('hidden', true);
-        this.root.classList.remove('blank');
+        this.root.classList.remove('is-null');
+        this.root.classList.remove('is-blank');
     }
 
 }
