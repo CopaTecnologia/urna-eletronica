@@ -10,6 +10,7 @@ import Candy from './Candy';
  * TODO: Carregar lista de eleições {título, descrição, passos[{position, limit, candies[]}]}
  * TODO: Carregar lista de salas [{nome, turma, período}]
  * TODO: Instanciar turnos da eleição [ano]
+ * TODO: Listar resultados
  */
 
 const ballot_steps = [{
