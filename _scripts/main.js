@@ -1,8 +1,16 @@
-import {ballot} from './ballot';
+import {
+    ballot
+} from './ballot';
 import Candy from './Candy';
 
 // const FIREBASE_AUTH = firebase.auth();
 // const FIREBASE_DATABASE = firebase.database();
+
+/**
+ * TODO: Carregar lista de eleições {título, descrição, passos[{position, limit, candies[]}]}
+ * TODO: Carregar lista de salas [{nome, turma, período}]
+ * TODO: Instanciar turnos da eleição [ano]
+ */
 
 const ballot_steps = [{
         position: 'Deputado Estadual',
@@ -36,7 +44,7 @@ const ballot_steps = [{
     }
 ];
 
-ballot.start(ballot_steps);
+if (ballot.display.root) ballot.start(ballot_steps);
 
 const panelAction = {
     digitar: function () {

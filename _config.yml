@@ -1,10 +1,17 @@
-
+---
 title: Urna Eletrônica Virtual
 timezone: America/Sao_Paulo
+defaults:
+-
+  scope:
+    type: pages
+  values:
+    layout: default
 description: ""
 baseurl: "/urna-eletronica"
 url: http://copatecnologia.com.br
 markdown: kramdown
+permalink: ":preety/"
 sass:
   style: compressed
 exclude:

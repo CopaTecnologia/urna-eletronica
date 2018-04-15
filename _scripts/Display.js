@@ -4,6 +4,7 @@ export default class Display {
 
     constructor(what) {
         const root = this.root = document.querySelector(what);
+        if (!root) return;
         this.position = root.querySelector('.display-position');
         this.number = root.querySelector('.display-number');
         this.img = root.querySelector('.display-img');
