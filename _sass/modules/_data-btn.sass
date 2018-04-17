@@ -10,27 +10,31 @@
     color: $text-color
     border-radius: 3px
     box-sizing: border-box
-    box-shadow: inset 0 1px 1px 0 rgba(white, .5), 0 2px 3px 0 rgba(black, .5)
     -webkit-transform: translate3d(0,-.1px,0)
     transform: translate3d(0,-.1px,0)
+    -webkit-transition-duration: .1s
+    transition-duration: .1s
 
+    &, &:hover, &:focus, &:active
+        box-shadow: inset 0 1px 1px 0 rgba(white, .5), 0 2px 3px 0 rgba(black, .5)
     &:active
         box-shadow: 0 -1px 1px 0 rgba(black, .5)
         -webkit-transform: translate3d(0,.6px,0) scale(.99)
         transform: translate3d(0,.6px,0) scale(.99)
 
     +variant(reverse)
-        color: #fff
-        background-color: $grey-color-dark
+        &, &:hover, &:focus, &:active
+            color: #fff
+            background: $grey-color-dark
     +variant(blank)
         background: #C5C6CC
-        background-image: linear-gradient(#C5C6CC 0%, #F5F6F6 100%)
+        background: linear-gradient(#C5C6CC 0%, #F5F6F6 100%)
     +variant(orange)
         background: #ff9b38
-        background-image: linear-gradient(#ff9b38 0%, #ea710e 100%)
+        background: linear-gradient(#ff9b38 0%, #ea710e 100%)
     +variant(green)
         background: #619951
-        background-image: linear-gradient(#619951 0%, #237f0a 100%)
+        background: linear-gradient(#619951 0%, #237f0a 100%)
         line-height: $x-large
     +variant(num)
         font:
