@@ -1,8 +1,33 @@
 import {ballot} from './ballot';
 import Candy from './Candy';
 
-// const FIREBASE_AUTH = firebase.auth();
-// const FIREBASE_DATABASE = firebase.database();
+const FIRE_AUTH = window.firebase.auth();
+
+// https://firebase.google.com/docs/firestore/quickstart?authuser=0
+const FIRESTORE = window.firebase.firestore();
+
+// FIRESTORE.collection('users').add({
+//     email: 'joaobatistacomunic@hotmail.com'
+// })
+// .then((dataRef) => {
+//     console.log(dataRef);
+// })
+// .catch((error) => {
+//     console.error("Error adding document: ", error);
+// });
+
+FIRESTORE.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, doc.data());
+        FIRESTORE.collection("users").doc(doc.id).collection('ellections').get().then((ellSnapshot) => {
+            ellSnapshot.forEach((ell) => {
+                console.log(ell.id, ell.data());
+            });
+        });
+    });
+});
+
+// https://www.youtube.com/firebase
 
 /**
  * TODO: Carregar lista de eleições {título, descrição, passos[{position, limit, candies[]}]}
