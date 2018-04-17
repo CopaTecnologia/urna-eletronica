@@ -1,64 +1,148 @@
+.site-header
+    min-height: $spacing-unit
+    background-color: $grey-color-dark
+    color: $grey-color-light
+    a
+        &:hover, &:focus
+            text-decoration: none
+            color: #fff
+.site-title
+    font:
+        size: 26px
+        weight: 600
+        family: $title-font-family
+    line-height: 56px
+    letter-spacing: 1px
+    margin-top: 0
+    margin-bottom: 0
+    float: left
+    .icon
+        svg
+            width: 40px
+            height: 40px
 
-.wrapper
-    width: 1040px
-    margin: auto
-
-.app
-    .wrapper
-        padding: 40px
-        padding-top: 120px
-        background: #f3f0f0 url("../img/brasao-justica-eleitoral.png") no-repeat 100% 10px
-        box-shadow: 0 3px 7px 0 rgba(black, .3)
-
-.display
-    width: $display-width
-    height: $display-height
-    background-color: #ebf8ff
-    box-shadow: 0 1px 1px 1px #fff, 0 -1px 1px 0px #ccc
-    position: relative
-    border: 1px solid #dadada
-
-.display-header
-    padding: $spacing
-
-.display-body
-    padding: 0 $spacing
-
-.display-label
-    display: inline-block
-    width: 6em
-
-.display-footer
+.site-nav
     position: absolute
-    left: 0
-    right: 0
-    bottom: 0
-    padding: $spacing / 4 $spacing / 3
-    +border(-top)
-
-.display-legend
-    position: absolute
-    top: 5px
-    font-size: $small
-
-.display-pic
-    width: 100px
-    height: 120px
+    top: 9px
+    z-index: 999
+    right: 9px
+    line-height: 56px
+    text-align: right
     overflow: hidden
-    background-color: #fff
-    +border
+    transform: translate(0)
+    transition: .3s ease-in-out
+    .page-link
+        display: block
+        margin: 0
+        padding: 0 50px
+        font:
+            family: $ui-font-family
+            size: 12px
+        text-transform: uppercase
+        letter-spacing: 1px
+        line-height: $spacing-unit
+        line-height: 50px
+        opacity: 0
+        &:hover, &:focus, &:active
+            background-color: #000
+        @for $i from 1 through 10
+            &:nth-of-type(#{$i})
+                animation: enter-from-right .4s .1s * ($i - 1) ease-in-out forwards
+        @keyframes enter-from-right
+            0%
+                opacity: 0
+                transform: translate(150px)
+            100%
+                opacity: 1
+                transform: translate(0)
+    .menu-icon
+        display: block
+        float: right
+        width: 36px
+        height: 36px
+        line-height: 0
+        padding-top: 10px
+        text-align: center
+        transition: .3s ease-in-out
+        &:before
+            content: initial
+        > svg
+            width: 18px
+            height: 15px
+            color: inherit
+            path
+                fill: currentcolor
+    .trigger
+        display: none
+    &:hover
+        .menu-icon
+            opacity: 0
+            transform: scale(0)
+        .trigger
+            clear: both
+            display: block
+            padding: 10px 0 0
+            background-color: $grey-color-dark
+            border-radius: 5px
+            overflow: hidden
 
-.panel
-    width: $panel-width
-    background-color: $black
-    padding: $spacing / 2
-    border-radius: 3px
-    box-shadow: 0 1px 1px 1px rgba(#fff, .5), 0 -1px 2px 1px rgba(#000, .5)
+.site-footer
+    font-size: $small-font-size
+    background-color: #000
+    padding: $spacing-unit 0
+    color: #fff
+    a
+        &:hover, &:active, &:focus
+            color: gold
 
-.panel-body
-    box-sizing: border-box
-    margin: $spacing / 2 auto
-    width: $spacing * 15
+.footer-heading
+    font-size: 18px
+    margin-bottom: $spacing-unit / 2
 
-.panel-footer
-    //
+.page-content
+    padding-top: $spacing-unit * 2
+    padding-bottom: $spacing-unit * 2
+
+.page-heading
+    font-size: 20px
+
+.post-list
+    margin-left: 0
+    list-style: none
+    > li
+        margin-bottom: $spacing-unit
+    .post-title
+        margin-top: 0
+        margin-bottom: 10px
+
+.post-meta
+    font-size: $small-font-size
+    color: $grey-color
+
+.post-link
+    display: block
+    font-size: 24px
+    line-height: 1.1
+
+.post-excerpt
+    font-size: $small-font-size
+    margin-top: 10px
+
+.post-header
+    margin-bottom: $spacing-unit
+
+.post-title
+    letter-spacing: -1px
+    line-height: 1.1
+
+.post-content
+    margin-bottom: $spacing-unit
+    >
+        h1, h2, h3, h4, h5, h6,
+        p, pre, blockquote, ul, ol, dl, figure
+            @extend .wrapper
+
+        ul, ol
+            +media-greater($on-palm)
+                padding-left: $spacing-unit * 1.5
+

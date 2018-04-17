@@ -1,6 +1,4 @@
-import {
-    ballot
-} from './ballot';
+import {ballot} from './ballot';
 import Candy from './Candy';
 
 // const FIREBASE_AUTH = firebase.auth();

@@ -6,24 +6,16 @@
     @media screen and (min-width: $device + 1)
         @content
 
-=white-gradient
-    background       : #C5C6CC
-    background-image : linear-gradient(#C5C6CC 0%, #F5F6F6 100%)
+=btn-shadow($color)
+    background-color: $color
+    box-shadow: none
+    transition: 0.5s ease-in-out
+    transform: translate(0)
+    &:hover, &:focus
+        outline: none
+        transform: translateY(0)
+        box-shadow: inset 0 1px 3px 0 rgba(#fff, 0.5), 0 -1px 5px 1px $color
 
-=orange-gradient
-    background       : #ff9b38
-    background-image : linear-gradient(#ff9b38 0%, #ea710e 100%)
-
-=green-gradient
-    background       : #619951
-    background-image : linear-gradient(#619951 0%, #237f0a 100%)
-
-=border($side:null)
-    border#{$side}: 1px solid $mid-grey
-
-// amsass-mixin
-// https://github.com/alepop/amsass-mixin/blob/master/amsass-mixins.sass
-// $am-prefix: null
 $am-prefix: data
 
 @function split-braces($target)
@@ -31,21 +23,32 @@ $am-prefix: data
     $end: str-index($target, "]")
     @return str-slice($target, $start + 1, $end - 1)
 
-
 =module($name)
     @if $am-prefix == null
         @warn "You need to define $am-prefix variable"
-
     $moduleName: #{$am-prefix}-#{$name}
     @at-root [#{$moduleName}]
         @content
 
 =variant($valueName)
-    $result: split-braces(unquote("#{&}"))
+    $result: split-braces("#{&}")
     @at-root [#{$result}~="#{$valueName}"]
         @content
 
 =child($childName)
-    $result: split-braces(unquote("#{&}"))
+    $result: split-braces(#{&})
     @at-root [#{$result}-#{$childName}]
+        @content
+
+=keyframes($keyframes-name)
+    @-webkit-keyframes #{$keyframes-name}
+        @content
+
+    @-moz-keyframes #{$keyframes-name}
+        @content
+
+    @-o-keyframes #{$keyframes-name}
+        @content
+
+    @keyframes #{$keyframes-name}
         @content
