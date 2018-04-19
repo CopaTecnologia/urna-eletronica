@@ -14,27 +14,33 @@ function getColletion(collName, ref, callback) {
             const data = item.data();
             data.ref = item.ref;
             data.id = item.id;
-            callback(data, item.ref);
+            callback(data);
         });
     });
 }
 
 const ballot_all_data = [];
-getColletion('ballots', FIRESTORE, (ballData, ballRef) => {
+getColletion('ballots', FIRESTORE, ballData => {
     ballot_all_data.push(ballData);
+
     ballData.steps = [];
-    getColletion('steps', ballRef, (stepData, stepRef) => {
-        stepData.ref = stepRef;
+    getColletion('steps', ballData.ref, stepData => {
         ballData.steps.push(stepData);
-        stepData.candies = [];
+
         // pausar o aplicativo aqui
-        getColletion('candies', stepRef, candyData => {
-            // continuar a execução aqui
+        stepData.candies = [];
+        getColletion('candies', stepData.ref, candyData => {
             stepData.candies.push(candyData);
+
+            // continuar a execução aqui
             (new Image()).src = candyData.img;
+
         });
+
         ballot.start(ballot_all_data[0].steps);
     });
+
+
 });
 
 // https://www.youtube.com/firebase
