@@ -5,6 +5,14 @@ export default class Candy {
         this.party = party;
         this.number = number;
     }
+    plainObject() {
+        return {
+            img: this.img,
+            name: this.name,
+            party: this.party,
+            number: this.number
+        }
+    } 
     static nullCandy() {
         return new Candy('', 'NÚMERO ERRADO', 'VOTO NULO');
     }
