@@ -2,8 +2,9 @@ import {
     ballot
 } from './ballot';
 import Candy from './Candy';
+import sounds from './sounds';
 
-const FIRE_AUTH = window.firebase.auth();
+// const FIRE_AUTH = window.firebase.auth();
 
 // https://firebase.google.com/docs/firestore/quickstart?authuser=0
 const FIRESTORE = window.firebase.firestore();
@@ -72,6 +73,7 @@ Array.prototype.forEach.call(
     document.querySelectorAll('.panel button'),
     btn => btn.addEventListener('click', function () {
         panelAction[this.dataset.click].call(this);
+        sounds.click.play();
     })
 );
 
@@ -100,5 +102,6 @@ function sendBallot(votes) {
         };
     });
 
-    console.table(results);
+    console.table(votes, results);
+    sounds.end.play();
 }

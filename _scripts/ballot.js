@@ -21,7 +21,6 @@ const ballot = {
             votes.push(step);
             if (!setStep(step.index + 1)) {
                 const results = votes;
-                setStep(0);
                 restart();
                 return results;
             }
@@ -67,6 +66,7 @@ function setStep(i) {
 
 function restart() {
     votes = [];
+    // Mostrar mensagem final do display
     setStep(0);
 }
 
