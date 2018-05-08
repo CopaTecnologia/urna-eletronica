@@ -4,3 +4,7 @@ _site
 desktop.ini
 npm-debug.log
 node_modules
+functions
+firebase.json
+.firebaserc
+firestore.*
