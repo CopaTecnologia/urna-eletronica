@@ -47,6 +47,7 @@ getColletion('ballots', FIRESTORE, ballData => {
 // https://www.youtube.com/firebase
 
 /**
+ * TODO: Fazer login do usuário
  * TODO: Carregar lista de eleições {título, descrição, passos[{position, limit, candies[]}]}
  * TODO: Carregar lista de salas [{nome, turma, período}]
  * TODO: Instanciar turnos da eleição [ano]
